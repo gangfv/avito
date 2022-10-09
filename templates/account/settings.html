@@ -1,0 +1,21 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Личный кабинет - Настройки{% endblock title %}
+
+{% block content %}
+    {% if request.user.is_authenticated %}
+        <div class="header-bar">
+            <a href="{% url 'profile' slug=user.username %}">&#8592; Back</a>
+        </div>
+        <div class="card-body"></div>
+        <form method="POST" action="" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ form.as_p }}
+            <button class="btn btn-success" type="submit">Готова</button>
+        </form>
+    {% else %}
+        <a href="{% url 'login' %}">Login</a>
+    {% endif %}
+
+{% endblock content %}

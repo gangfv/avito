@@ -1,0 +1,29 @@
+{% extends '_base.html' %}
+{% load static %}
+
+{% block title %}Личный кабинет{% endblock title %}
+
+{% block content %}
+    Личный кабинет
+    <p>{{ page_user }}</p>
+    <p>{{ customuser.email }}
+        {% for emailaddress in emailaddress %}
+            {% if emailaddress.verified %}
+                Подтверждена
+            {% else %}
+                Не Подтверждена
+            {% endif %}
+        {% endfor %}
+    </p>
+    <p>{{ customuser.last_name }}</p>
+    <p>{{ customuser.first_name }}</p>
+    <p>{{ customuser.middle_name }}</p>
+    <p>VIP -
+        {% if customuser.vip %}
+            Есть
+        {% else %}
+            Нету
+        {% endif %}
+    </p>
+    <a href="{% url 'settings' pk=user.id %}">Настройки</a>
+{% endblock content %}
