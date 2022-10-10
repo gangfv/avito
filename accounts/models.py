@@ -14,4 +14,4 @@ class CustomUser(AbstractUser):
         return self.username if self.username else self.email
 
     def get_absolute_url(self):
-        return reverse('profile', args=[str(self.id)])
+        return reverse('profile', args=[str(self.username)])
